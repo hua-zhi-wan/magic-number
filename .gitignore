@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
-/dist
+
+# I need to deploy it on Github.
+#  /dist
 
 
 # local env files

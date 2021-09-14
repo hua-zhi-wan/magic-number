@@ -1,20 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!--<HelloWorld msg="Welcome to Your Vue.js App"/>-->
+  <MagicNumber/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import MagicNumber from "@/components/MagicNumber";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
+    MagicNumber
   }
 }
 </script>
 
 <style>
+/*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,4 +26,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+*/
 </style>
