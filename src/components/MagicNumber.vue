@@ -4,13 +4,13 @@
     <p v-show="data.level===-1">游戏开始时，请在【0~127】中随意挑选一个数字！</p>
     <p>如果以下排列中有你想象的数字，就点击【是】，反之点击【否】</p>
   </div>
-  <div class="container">
+  <div class="container float-container">
     <span v-for="v in data.showList" v-bind:key="v.id" class="magic-node"> {{v}} </span>
   </div>
-  <br>
   <div class="container">
     <p v-show="false">{{data.ansList}}</p>
     <p v-show="data.level>=7">盲猜你选择的数字是 - <span id="bigger">{{bitToNum(data.ansList)}}</span></p>
+    <button v-show="data.level>=7" @click="reload">再玩一次！</button>
     <button v-show="data.level===-1" @click="init">开始游戏！</button>
     <button v-show="data.level>=0 && data.level<7" @click="choose(true)">是</button>
     <button v-show="data.level>=0 && data.level<7" @click="choose(false)">否</button>
@@ -62,24 +62,14 @@ export default {
       return val;
     }
 
-    function init() {
-      data.level = 0;
-      /*
-      for (let i=0; i<128; ++i) {
-        console.log(i);
-        console.log(numToBit(i));
-      }
-      */
-      makeShow();
-    }
-
     return {
       data,
 
       choose,
       numToBit,
       bitToNum,
-      init
+      init: ()=>{data.level=0; makeShow();},
+      reload: ()=>window.location.reload(),
     };
   }
 }
@@ -92,30 +82,44 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 h2 {
   text-align: center;
-  font-size: 50px;
+  font-size: 3em;
+  margin-block-end: 0.3px;
 }
+
 p {
-  font-size: 24px;
+  font-size: 1.5em;
 }
+
 button {
   font-family: Consolas, sans-serif;
-  font-size: 30px;
-  margin: 0px 50px;
-  padding: 0px 20px;
+  font-size: 1.8em;
+  margin: 0 3em;
+  padding: 0.1em 1em;
 }
+
 .container {
   display: block;
   overflow: hidden;
   text-align: center;
   zoom: 1;
 }
+
+.float-container {
+  max-width: min(90vw, 1200px);
+  font-size: max(1vw, 1em);
+  width: auto;
+  margin: 0 auto 3em;
+}
+
 .magic-node {
-  font-size: 30px;
-  width: 100px;
-  height: 40px;
-  margin: 10px 20px;
+  font-size: 1.5em;
+  width: 3em;
+  padding: 0.2em 0.3em;
+  margin: 0.5em 0.5em 0 0;
+  display: block;
   float: left;
   text-align: center;
   box-sizing: border-box;
@@ -123,7 +127,7 @@ button {
 }
 
 #bigger {
-  font-size: 50px;
+  font-size: 4em;
   font-weight: bold;
 }
 </style>

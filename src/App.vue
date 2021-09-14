@@ -17,6 +17,9 @@ export default {
 </script>
 
 <style>
+body {
+  font-size: 70%;
+}
 /*
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
